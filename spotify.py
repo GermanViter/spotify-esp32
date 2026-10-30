@@ -44,7 +44,16 @@ def get_currently_playing():
             return None
         if resp.status_code != 200:
             raise OSError("api error: %d" % resp.status_code)
-        return resp.json()
+        song = resp.json()
+
+        return {
+            "name": song["item"]["name"],
+            "album": song["item"]["album"]["name"],
+            "artist": song["item"]["artists"][0]["name"],
+            "progress_ms": song["progress_ms"],
+            "duration_ms": song["item"]["duration_ms"],
+            "is_playing": song["is_playing"],
+        }
     finally:
         resp.close()
     
