@@ -7,7 +7,7 @@ POLL_INTERVAL = 5  # User requested 5s polling
 
 def run():
     oled = display.init_display()
-    display.show_text(oled, "Connecting...")
+    display.wrap_text(oled, "Connected to Wifi")
 
     last_track = None
 
