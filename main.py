@@ -6,9 +6,8 @@ import wifi
 POLL_INTERVAL = 5  # User requested 5s polling
 
 def run():
-    wifi.connect()
     oled = display.init_display()
-    display.show_text(oled, "Connected...")
+    display.show_text(oled, "Connecting...")
 
     last_track = None
 
