@@ -25,6 +25,9 @@ def run():
                 else:
                     display.show_text(oled, "Nothing playing")
 
+            if info:
+                display.display_progress(oled, info["progress_ms"], info["duration_ms"])
+
         except OSError as e:
             display.show_text(oled, "Err: " + str(e))
             last_track = None  # force refresh on recovery
