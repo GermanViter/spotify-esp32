@@ -56,10 +56,3 @@ def get_currently_playing():
         }
     finally:
         resp.close()
-    
-if __name__ == "__main__":
-    res = get_currently_playing()
-    if sys.implementation.name == "micropython":
-        print(res)
-    else:
-        print(json.dumps(res, indent=2))
