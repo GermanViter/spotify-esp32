@@ -37,3 +37,18 @@ def display_progress(oled, progress_ms, duration_ms, x=10, y=49, width=108, heig
     fill = max(0, min(fill, width - 2))
     oled.fill_rect(x + 1, y + 1, fill, height - 2, onColor)
     oled.show()
+
+def display_seconds(oled, progress_ms, duration_ms):
+
+    total_progress_sec = progress_ms // 1000
+    progress_min = total_progress_sec // 60
+    progress_sec = total_progress_sec % 60
+
+    
+    total_duration_sec = progress_ms // 1000
+    duration_min = total_duration_sec  // 60
+    duration_sec = total_duration_sec % 60
+    text = f"{progress_min}:{progress_sec}/{duration_min}:{duration_sec}"
+
+    oled.text(text, int((128 - len(text) * 6) / 2), int((64 - 8) / 2))
+        
