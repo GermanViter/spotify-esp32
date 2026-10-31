@@ -1,1 +1,6 @@
-# boot.py -- run on boot-up
+import wifi
+
+try:
+    print(wifi.connect())
+except OSError as e:
+    print("wifi:", e)
