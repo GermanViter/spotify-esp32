@@ -28,4 +28,12 @@ def wrap_text(oled, text, x=0, y=0, max_chars=16, line_height=10):
     oled.fill(0)
     for i, line in enumerate(lines[:8]):  # max 8 lines on 64px display
         oled.text(line, x, y + i * line_height)
-    oled.show()   
+    oled.show() 
+
+def display_progress(oled, progress_ms, duration_ms, x=10, y=49, width=108, height=5, onColor=1, ofColor=0):
+    oled.fill_rect(x, y, width, height, ofColor)
+    oled.rect(x, y, width, height, onColor)
+    fill = int((width - 2) * progress_ms / duration_ms) if duration_ms else 0
+    fill = max(0, min(fill, width - 2))
+    oled.fill_rect(x + 1, y + 1, fill, height - 2, onColor)
+    oled.show()
