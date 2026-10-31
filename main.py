@@ -5,7 +5,7 @@ import spotify
 import wifi
 
 oled = display.init_display()
-display.show_text(oled, 'Hello World')
+display.wrap_text(oled,spotify.get_currently_playing()["name"])
 
 def run():
     print(wifi.connect())
